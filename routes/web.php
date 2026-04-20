@@ -20,10 +20,6 @@ Route::post('/register', [LoginController::class, 'register']);
 Route::post('/login', [LoginController::class, 'login']);
 
 // Dashboards (RBAC test)
-Route::get('/employee-dashboard', function () {
-    return "Employee Dashboard";
-})->middleware('role:employee');
+Route::get('/employee-dashboard', [LoginController::class, 'employeeDashboard'])->middleware('role:employee');
 
-Route::get('/dealer-dashboard', function () {
-    return "Dealer Dashboard";
-})->middleware('role:dealer');
+Route::get('/dealer-dashboard', [LoginController::class, 'dealerDashboard'])->middleware('role:dealer');
